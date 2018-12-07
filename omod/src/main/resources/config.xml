@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module configVersion="1.2">
+	
+	<!-- Base Module Properties -->
+	<id>${project.parent.artifactId}</id>
+	<name>${project.parent.name}</name>
+	<version>${project.parent.version}</version>
+	<package>org.openmrs.module.flowsheetexample</package>
+	<author>mseaton</author>
+	<description>
+			${project.parent.description}
+	</description>
+
+	<activator>org.openmrs.module.flowsheetexample.FlowsheetExampleActivator</activator>
+
+	<require_version>${openmrsPlatformVersion}</require_version>
+
+	<require_modules>
+		<require_module version="${htmlformentryuiVersion}">
+			org.openmrs.module.htmlformentryui
+		</require_module>
+	</require_modules>
+
+	<aware_of_modules>
+		<aware_of_module>org.openmrs.module.legacyui</aware_of_module>
+	</aware_of_modules>
+
+	<messages>
+		<lang>en</lang>
+		<file>messages.properties</file>
+	</messages>
+	
+</module>
+
