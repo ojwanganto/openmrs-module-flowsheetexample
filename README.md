@@ -2,7 +2,7 @@
 Example module for flowsheet in htmlformentryui
 
 1. In SDK, create a new server using refapp 2.8
-2. Check out latest of htmlformflowsheetui, deploy this to the server
+2. Check out latest of openmrs/htmlformflowsheetui in "flowsheet" branch, deploy this to the server
 3. Build and deploy this module (flowsheetexample)
 4. Start up server
 5. Create a patient
