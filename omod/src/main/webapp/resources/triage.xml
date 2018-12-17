@@ -12,7 +12,8 @@
   ~ Copyright (C) OpenMRS, LLC.  All Rights Reserved.
   -->
 
-<htmlform formUuid="a000cb34-9ec1-4344-a1c8-f692232f6edd" formName="Vitals" formEncounterType="65a92f2-baf8-42e9-9612-53064be868e8" formVersion="1.0">
+<htmlform formUuid="37f6bd8d-586a-4169-95fa-5781f987fe62" formName="Vitals"
+          formEncounterType="d1059fb9-a079-4feb-a749-eedd709ae542" formVersion="1.0">
     <style>
         #calculated-bmi {
         font-weight: bold;
@@ -22,6 +23,9 @@
         .encounter-summary-container #calculated-bmi {
         font-size: 1em;
         font-weight: normal;
+        }
+        .hidden {
+        display:none;
         }
 
     </style>
@@ -61,6 +65,7 @@
 
                 jq(function() {
                 jq('#calculated-bmi-wrapper').hide();
+                jq('#encounter-details').hide();
 
                 getField('weight.value').change(updateBmi)
                 getField('height.value').change(updateBmi);
@@ -118,61 +123,54 @@
 
     </includeIf>
 
-    <div class="ke-form-header">
-        <table style="width: 100%">
-            <tr>
-                <td align="left">Date:
-                    <encounterDate id="encounter-date" showTime="true"/>
-                </td>
-                <td align="left">Provider:
-                    <encounterProvider default="currentUser"/>
-                </td>
-                <td align="right">Location:
-                    <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete"/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <!--<div  id="encounter-details" sectionTag="section" headerStyle="title" headerLabel="Encounter Details">
+    <div class="hidden" id="encounter-details">
         <fieldset>
-            <legend>Date</legend>
+            <legend>Encounter Details</legend>
             <label>Date</label>
 
             <encounterDate default="now" showTime="false"/>
-        </fieldset>
 
-        <fieldset>
-            <legend>Provider</legend>
             <label>Provider</label>
 
             <encounterProvider default="currentUser"/>
-        </fieldset>
 
-        <fieldset>
-            <legend>Location</legend>
             <label>Location</label>
 
             <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation"/>
+
+
         </fieldset>
-    </div>-->
+
+
+    </div>
 
     <section id="vitals" sectionTag="section" headerStyle="title" headerLabel="Vitals">
         <fieldset>
-            <legend><lookup expression="fn.getConcept('CIEL:5090').name"/></legend>
-            <h3><lookup expression="fn.getConcept('CIEL:5090').name"/></h3>
+            <legend>
+                <lookup expression="fn.getConcept('CIEL:5090').name"/>
+            </legend>
+            <h3>
+                <lookup expression="fn.getConcept('CIEL:5090').name"/>
+            </h3>
 
             <p class="left">
-                <obs conceptId="CIEL:5090" id="height" showUnits="uicommons.units.centimeters" unitsCssClass="append-to-value"/>
+                <obs conceptId="CIEL:5090" id="height" showUnits="uicommons.units.centimeters"
+                     unitsCssClass="append-to-value"/>
             </p>
 
         </fieldset>
 
         <fieldset>
-            <legend><lookup expression="fn.getConcept('CIEL:5089').name"/></legend>
-            <h3><lookup expression="fn.getConcept('CIEL:5089').name"/></h3>
+            <legend>
+                <lookup expression="fn.getConcept('CIEL:5089').name"/>
+            </legend>
+            <h3>
+                <lookup expression="fn.getConcept('CIEL:5089').name"/>
+            </h3>
 
             <p class="left">
-                <obs conceptId="CIEL:5089" id="weight" showUnits="uicommons.units.kilograms" unitsCssClass="append-to-value"/>
+                <obs conceptId="CIEL:5089" id="weight" showUnits="uicommons.units.kilograms"
+                     unitsCssClass="append-to-value"/>
             </p>
 
         </fieldset>
@@ -195,7 +193,7 @@
                 </span>
 
                 <p id="calculated-bmi-continue">
-                    <input type="hidden" name="focus-in-bmi-question" id="hidden-calculated-bmi" />
+                    <input type="hidden" name="focus-in-bmi-question" id="hidden-calculated-bmi"/>
                     Tab or Enter to continue
                 </p>
             </fieldset>
@@ -203,30 +201,45 @@
         </includeIf>
 
         <fieldset>
-            <legend><lookup expression="fn.getConcept('CIEL:5088').name"/></legend>
-            <h3><lookup expression="fn.getConcept('CIEL:5088').name"/></h3>
+            <legend>
+                <lookup expression="fn.getConcept('CIEL:5088').name"/>
+            </legend>
+            <h3>
+                <lookup expression="fn.getConcept('CIEL:5088').name"/>
+            </h3>
 
             <p class="left">
-                <obs conceptId="CIEL:5088" id="temperature" showUnits="uicommons.units.degreesCelsius" unitsCssClass="append-to-value"/>
+                <obs conceptId="CIEL:5088" id="temperature" showUnits="uicommons.units.degreesCelsius"
+                     unitsCssClass="append-to-value"/>
             </p>
 
         </fieldset>
 
         <fieldset>
-            <legend><lookup expression="fn.getConcept('CIEL:5087').name"/></legend>
-            <h3><lookup expression="fn.getConcept('CIEL:5087').name"/></h3>
+            <legend>
+                <lookup expression="fn.getConcept('CIEL:5087').name"/>
+            </legend>
+            <h3>
+                <lookup expression="fn.getConcept('CIEL:5087').name"/>
+            </h3>
 
             <p>
-                <obs conceptId="CIEL:5087" id="heart_rate" showUnits="uicommons.units.perMinute" unitsCssClass="append-to-value"/>
+                <obs conceptId="CIEL:5087" id="heart_rate" showUnits="uicommons.units.perMinute"
+                     unitsCssClass="append-to-value"/>
             </p>
         </fieldset>
 
         <fieldset>
-            <legend><lookup expression="fn.getConcept('CIEL:5242').name"/></legend>
-            <h3><lookup expression="fn.getConcept('CIEL:5242').name"/></h3>
+            <legend>
+                <lookup expression="fn.getConcept('CIEL:5242').name"/>
+            </legend>
+            <h3>
+                <lookup expression="fn.getConcept('CIEL:5242').name"/>
+            </h3>
 
             <p>
-                <obs conceptId="CIEL:5242" id="respiratory_rate" showUnits="uicommons.units.perMinute" unitsCssClass="append-to-value"/>
+                <obs conceptId="CIEL:5242" id="respiratory_rate" showUnits="uicommons.units.perMinute"
+                     unitsCssClass="append-to-value"/>
             </p>
         </fieldset>
 
@@ -246,11 +259,16 @@
         </fieldset>
 
         <fieldset>
-            <legend><lookup expression="fn.getConcept('CIEL:5092').name"/></legend>
-            <h3><lookup expression="fn.getConcept('CIEL:5092').name"/></h3>
+            <legend>
+                <lookup expression="fn.getConcept('CIEL:5092').name"/>
+            </legend>
+            <h3>
+                <lookup expression="fn.getConcept('CIEL:5092').name"/>
+            </h3>
 
             <p>
-                <obs conceptId="CIEL:5092" id="o2_sat" showUnits="uicommons.units.percent" unitsCssClass="append-to-value"/>
+                <obs conceptId="CIEL:5092" id="o2_sat" showUnits="uicommons.units.percent"
+                     unitsCssClass="append-to-value"/>
             </p>
         </fieldset>
 
@@ -258,11 +276,16 @@
         <!-- only show BMI if patient is less than 13 years old (on the encounterDate) -->
         <includeIf velocityTest="13 > $patient.getAge($encounter.getEncounterDatetime())">
             <fieldset>
-                <legend><lookup expression="fn.getConcept('CIEL:1343').name"/></legend>
-                <h3><lookup expression="fn.getConcept('CIEL:1343').name"/></h3>
+                <legend>
+                    <lookup expression="fn.getConcept('CIEL:1343').name"/>
+                </legend>
+                <h3>
+                    <lookup expression="fn.getConcept('CIEL:1343').name"/>
+                </h3>
 
                 <p>
-                    <obs conceptId="CIEL:1343" id="muac" showUnits="uicommons.units.millimeters" unitsCssClass="append-to-value"/>
+                    <obs conceptId="CIEL:1343" id="muac" showUnits="uicommons.units.millimeters"
+                         unitsCssClass="append-to-value"/>
                 </p>
             </fieldset>
         </includeIf>
